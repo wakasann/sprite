@@ -28,8 +28,13 @@ namespace CssSprite
         /// 服务器地址
         /// </summary>
         private const string NetUrl = "https://csssprite.herokuapp.com/";
-
-
+		
+        /// <summary>
+        /// 排序
+        /// </summary>
+		private int orderby_mode = 0; //排序方式
+		private int orderby_direction = 0; //排序方向
+        
         private VersionInfo newVersion;
         private List<ImageInfo> _imgList;
         private string dialogFile = string.Empty;
@@ -64,6 +69,7 @@ namespace CssSprite
             thread = new Thread(th);
             thread.Start();
             comboBoxImgType.DropDownStyle = ComboBoxStyle.DropDownList;
+            ComboBoxOrderby.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         void panelImages_LostFocus(object sender, EventArgs e)
@@ -1142,5 +1148,6 @@ namespace CssSprite
         {
             Process.Start("https://csssprite.herokuapp.com/lessVar");
         }
+        
     }
 }
