@@ -501,7 +501,8 @@ namespace CssSprite
                 img.Tag = imgInfo;
                 _imgList.Add(imgInfo);
             }
-            _imgList.Sort(ImageComparison);
+            //_imgList.Sort(ImageComparison);
+            _imgList.Sort((x, y) => { return -y.Name.CompareTo(x.Name); });
         }
 
         int ImageComparison(ImageInfo i1, ImageInfo i2)
@@ -622,8 +623,10 @@ namespace CssSprite
             
             if (isSass || isPhone)
             {
-                _left = left == 0 ? "0" : "0 " + "-{2}" + left.ToString() + unit;
-                _top = top == 0 ? "0" : "0 " + "-{2}" + top.ToString() + unit;
+//                _left = left == 0 ? "0" : "0 " + "-{2}" + left.ToString() + unit;
+//                _top = top == 0 ? "0" : "0 " + "-{2}" + top.ToString() + unit;
+				  _left = left == 0 ? "0" : (0 - left).ToString() + unit;
+                  _top = top == 0 ? "0" : (0 - top).ToString() + unit;
             }
             else {
                 _left = left == 0 ? "0" : (0 - left).ToString() + unit;
