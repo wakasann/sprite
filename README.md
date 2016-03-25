@@ -17,3 +17,7 @@ http://download.csdn.net/detail/wx247919365/8741243
 # V4.3最新版本介绍
 
 http://www.cnblogs.com/wang4517/p/4529741.html
+
+# branch 2016-03-25 修正说明
+1. 修改FormMain.cs 中的LoadImages()方法，将原方法的根据图片宽度进行排序，替换为根据文件名进行排序，只执行简单的数字文件名排序，如:3.png,1.png,2.png ，是从小到大的排序
+2. 修改 FormMain.cs 中的GetSassCss() 方法，是因为sass background position是三位数，修改成和css一样的background position.
