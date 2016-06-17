@@ -583,6 +583,8 @@ namespace CssSprite
 
             var sassStr = string.Empty;
             var cssStr = string.Empty;
+            var jsStr  = string.Empty; //javascript数组的字符串
+            jsStr = "var "+ txtName.Text + " = ";	
 
             if (chkBoxPhone.Checked)
             {
@@ -594,16 +596,58 @@ namespace CssSprite
                 sassStr = String.Format(tmpStr, "@mixin ","").Replace("[", "{").Replace("]", "}");
                 cssStr = String.Format(tmpStr, ".","").Replace("[", "{").Replace("]", "}");
             }
-            
+            jsStr += "[";
+            //图片数量
+            var imgCount = panelImages.Controls.Count;
+            var index 	 = 0;
             foreach (PictureBox pb in panelImages.Controls)
             {
                 sassStr += GetSassCss(pb.Image, pb.Left - edgeSize.MinWidth, pb.Top - edgeSize.MinHeight, true);
-                cssStr += GetSassCss(pb.Image, pb.Left - edgeSize.MinWidth, pb.Top - edgeSize.MinHeight, false);
+                cssStr  += GetSassCss(pb.Image, pb.Left - edgeSize.MinWidth, pb.Top - edgeSize.MinHeight, false);
+                //javascript 数组的字符串
+                jsStr   += getJavaScriptPosition(pb.Image, pb.Left - edgeSize.MinWidth, pb.Top - edgeSize.MinHeight);
+                index++;
+                if(index < imgCount){
+                	jsStr  += ",";
+                }
+                
             }
+            jsStr += "]";
+            
             txtSass.Text = sassStr;
             txtCss.Text = cssStr;
+            txtJs.Text = jsStr + ";";
+            
         }
+		 /// <summary>
+        /// 得到javascript position的数组
+        /// </summary>
+        /// <param name="img">图片</param>
+        /// <param name="left">左边距离</param>
+        /// <param name="top">右边距离</param>
+        /// <returns></returns>	
+        string getJavaScriptPosition(Image img, int left, int top){
+        	ImageInfo imgInfo = (ImageInfo)img.Tag;
+            var isPhone = chkBoxPhone.Checked;
+            var unit = "px";
+            var str = string.Empty;
+            
+            if (isPhone)
+            {
+                unit = "";
+            }
+            var _left = string.Empty;
+            var _top = string.Empty;
 
+            _left = left == 0 ? "0" : (0 - left).ToString() + unit;
+            _top = top == 0 ? "0" : (0 - top).ToString() + unit;
+            
+            var imgHeight = isPhone ? img.Height.ToString()  : img.Height.ToString()+unit;
+            var imgWidth = isPhone ? img.Width.ToString() : img.Width.ToString() + unit;
+            str = "'" + _left + " " + _top + "'" ;
+            return str;
+        }
+        
         /// <summary>
         /// 得到sass代码
         /// </summary>
@@ -1148,6 +1192,8 @@ namespace CssSprite
         {
             Process.Start("https://csssprite.herokuapp.com/lessVar");
         }
+        
+        
         
     }
 }

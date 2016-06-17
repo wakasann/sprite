@@ -33,12 +33,10 @@
         	this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
         	this.comboBoxImgType = new System.Windows.Forms.ComboBox();
         	this.label1 = new System.Windows.Forms.Label();
-        	this.txtSass = new System.Windows.Forms.TextBox();
         	this.label2 = new System.Windows.Forms.Label();
         	this.txtDir = new System.Windows.Forms.TextBox();
         	this.label5 = new System.Windows.Forms.Label();
         	this.txtName = new System.Windows.Forms.TextBox();
-        	this.txtCss = new System.Windows.Forms.TextBox();
         	this.colorDialog = new System.Windows.Forms.ColorDialog();
         	this.chkBoxPhone = new System.Windows.Forms.CheckBox();
         	this.panelTop = new System.Windows.Forms.Panel();
@@ -59,26 +57,31 @@
         	this.linkLabelLess = new System.Windows.Forms.LinkLabel();
         	this.linkLabelSass = new System.Windows.Forms.LinkLabel();
         	this.linkLabelHelp = new System.Windows.Forms.LinkLabel();
-        	this.tabControl = new System.Windows.Forms.TabControl();
-        	this.tabPage1 = new System.Windows.Forms.TabPage();
-        	this.tabPage2 = new System.Windows.Forms.TabPage();
-        	this.tabPage3 = new System.Windows.Forms.TabPage();
-        	this.txtBase64Sass = new System.Windows.Forms.TextBox();
-        	this.tabPage4 = new System.Windows.Forms.TabPage();
-        	this.txtBase64Css = new System.Windows.Forms.TextBox();
         	this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
         	this.panel1 = new System.Windows.Forms.Panel();
         	this.panelImages = new System.Windows.Forms.Panel();
+        	this.tabPage4 = new System.Windows.Forms.TabPage();
+        	this.txtBase64Css = new System.Windows.Forms.TextBox();
+        	this.tabPage3 = new System.Windows.Forms.TabPage();
+        	this.txtBase64Sass = new System.Windows.Forms.TextBox();
+        	this.tabPage2 = new System.Windows.Forms.TabPage();
+        	this.txtCss = new System.Windows.Forms.TextBox();
+        	this.tabPage1 = new System.Windows.Forms.TabPage();
+        	this.txtSass = new System.Windows.Forms.TextBox();
+        	this.tabControl = new System.Windows.Forms.TabControl();
+        	this.tabPage5 = new System.Windows.Forms.TabPage();
+        	this.txtJs = new System.Windows.Forms.TextBox();
         	this.panelTop.SuspendLayout();
         	this.panelBottom.SuspendLayout();
         	this.panelPhone.SuspendLayout();
-        	this.tabControl.SuspendLayout();
-        	this.tabPage1.SuspendLayout();
-        	this.tabPage2.SuspendLayout();
-        	this.tabPage3.SuspendLayout();
-        	this.tabPage4.SuspendLayout();
         	this.tableLayoutPanel1.SuspendLayout();
         	this.panel1.SuspendLayout();
+        	this.tabPage4.SuspendLayout();
+        	this.tabPage3.SuspendLayout();
+        	this.tabPage2.SuspendLayout();
+        	this.tabPage1.SuspendLayout();
+        	this.tabControl.SuspendLayout();
+        	this.tabPage5.SuspendLayout();
         	this.SuspendLayout();
         	// 
         	// openFileDialog
@@ -109,21 +112,6 @@
         	this.label1.Size = new System.Drawing.Size(101, 12);
         	this.label1.TabIndex = 3;
         	this.label1.Text = "雪碧图文件类型：";
-        	// 
-        	// txtSass
-        	// 
-        	this.txtSass.BackColor = System.Drawing.Color.White;
-        	this.txtSass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-        	this.txtSass.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.txtSass.ForeColor = System.Drawing.Color.RoyalBlue;
-        	this.txtSass.Location = new System.Drawing.Point(3, 3);
-        	this.txtSass.Multiline = true;
-        	this.txtSass.Name = "txtSass";
-        	this.txtSass.ReadOnly = true;
-        	this.txtSass.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-        	this.txtSass.Size = new System.Drawing.Size(979, 101);
-        	this.txtSass.TabIndex = 11;
-        	this.txtSass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSass_KeyDown);
         	// 
         	// label2
         	// 
@@ -166,21 +154,6 @@
         	this.txtName.TabIndex = 16;
         	this.txtName.Text = "img";
         	this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
-        	// 
-        	// txtCss
-        	// 
-        	this.txtCss.BackColor = System.Drawing.Color.White;
-        	this.txtCss.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-        	this.txtCss.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.txtCss.ForeColor = System.Drawing.Color.RoyalBlue;
-        	this.txtCss.Location = new System.Drawing.Point(3, 3);
-        	this.txtCss.Multiline = true;
-        	this.txtCss.Name = "txtCss";
-        	this.txtCss.ReadOnly = true;
-        	this.txtCss.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-        	this.txtCss.Size = new System.Drawing.Size(979, 101);
-        	this.txtCss.TabIndex = 19;
-        	this.txtCss.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCss_KeyDown);
         	// 
         	// chkBoxPhone
         	// 
@@ -439,92 +412,6 @@
         	this.linkLabelHelp.Text = "手机端页面rem自适应脚本";
         	this.linkLabelHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelHelp_LinkClicked);
         	// 
-        	// tabControl
-        	// 
-        	this.tabControl.Controls.Add(this.tabPage1);
-        	this.tabControl.Controls.Add(this.tabPage2);
-        	this.tabControl.Controls.Add(this.tabPage3);
-        	this.tabControl.Controls.Add(this.tabPage4);
-        	this.tabControl.Location = new System.Drawing.Point(6, 96);
-        	this.tabControl.Name = "tabControl";
-        	this.tabControl.SelectedIndex = 0;
-        	this.tabControl.Size = new System.Drawing.Size(993, 133);
-        	this.tabControl.TabIndex = 21;
-        	// 
-        	// tabPage1
-        	// 
-        	this.tabPage1.Controls.Add(this.txtSass);
-        	this.tabPage1.Location = new System.Drawing.Point(4, 22);
-        	this.tabPage1.Name = "tabPage1";
-        	this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-        	this.tabPage1.Size = new System.Drawing.Size(985, 107);
-        	this.tabPage1.TabIndex = 0;
-        	this.tabPage1.Text = "sass代码";
-        	this.tabPage1.UseVisualStyleBackColor = true;
-        	// 
-        	// tabPage2
-        	// 
-        	this.tabPage2.Controls.Add(this.txtCss);
-        	this.tabPage2.Location = new System.Drawing.Point(4, 22);
-        	this.tabPage2.Name = "tabPage2";
-        	this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-        	this.tabPage2.Size = new System.Drawing.Size(985, 107);
-        	this.tabPage2.TabIndex = 1;
-        	this.tabPage2.Text = "css/less代码";
-        	this.tabPage2.UseVisualStyleBackColor = true;
-        	// 
-        	// tabPage3
-        	// 
-        	this.tabPage3.Controls.Add(this.txtBase64Sass);
-        	this.tabPage3.Location = new System.Drawing.Point(4, 22);
-        	this.tabPage3.Name = "tabPage3";
-        	this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-        	this.tabPage3.Size = new System.Drawing.Size(985, 107);
-        	this.tabPage3.TabIndex = 2;
-        	this.tabPage3.Text = "sass Base64代码";
-        	this.tabPage3.UseVisualStyleBackColor = true;
-        	// 
-        	// txtBase64Sass
-        	// 
-        	this.txtBase64Sass.BackColor = System.Drawing.Color.White;
-        	this.txtBase64Sass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-        	this.txtBase64Sass.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.txtBase64Sass.ForeColor = System.Drawing.Color.RoyalBlue;
-        	this.txtBase64Sass.Location = new System.Drawing.Point(3, 3);
-        	this.txtBase64Sass.Multiline = true;
-        	this.txtBase64Sass.Name = "txtBase64Sass";
-        	this.txtBase64Sass.ReadOnly = true;
-        	this.txtBase64Sass.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-        	this.txtBase64Sass.Size = new System.Drawing.Size(979, 101);
-        	this.txtBase64Sass.TabIndex = 12;
-        	this.txtBase64Sass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBase64Sass_KeyDown);
-        	// 
-        	// tabPage4
-        	// 
-        	this.tabPage4.Controls.Add(this.txtBase64Css);
-        	this.tabPage4.Location = new System.Drawing.Point(4, 22);
-        	this.tabPage4.Name = "tabPage4";
-        	this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-        	this.tabPage4.Size = new System.Drawing.Size(985, 107);
-        	this.tabPage4.TabIndex = 3;
-        	this.tabPage4.Text = "css Base64代码";
-        	this.tabPage4.UseVisualStyleBackColor = true;
-        	// 
-        	// txtBase64Css
-        	// 
-        	this.txtBase64Css.BackColor = System.Drawing.Color.White;
-        	this.txtBase64Css.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-        	this.txtBase64Css.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.txtBase64Css.ForeColor = System.Drawing.Color.RoyalBlue;
-        	this.txtBase64Css.Location = new System.Drawing.Point(3, 3);
-        	this.txtBase64Css.Multiline = true;
-        	this.txtBase64Css.Name = "txtBase64Css";
-        	this.txtBase64Css.ReadOnly = true;
-        	this.txtBase64Css.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-        	this.txtBase64Css.Size = new System.Drawing.Size(979, 101);
-        	this.txtBase64Css.TabIndex = 12;
-        	this.txtBase64Css.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBase64Css_KeyDown);
-        	// 
         	// tableLayoutPanel1
         	// 
         	this.tableLayoutPanel1.ColumnCount = 1;
@@ -563,6 +450,145 @@
         	this.panelImages.Size = new System.Drawing.Size(1002, 242);
         	this.panelImages.TabIndex = 0;
         	// 
+        	// tabPage4
+        	// 
+        	this.tabPage4.Controls.Add(this.txtBase64Css);
+        	this.tabPage4.Location = new System.Drawing.Point(4, 22);
+        	this.tabPage4.Name = "tabPage4";
+        	this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+        	this.tabPage4.Size = new System.Drawing.Size(985, 107);
+        	this.tabPage4.TabIndex = 3;
+        	this.tabPage4.Text = "css Base64代码";
+        	this.tabPage4.UseVisualStyleBackColor = true;
+        	// 
+        	// txtBase64Css
+        	// 
+        	this.txtBase64Css.BackColor = System.Drawing.Color.White;
+        	this.txtBase64Css.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+        	this.txtBase64Css.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.txtBase64Css.ForeColor = System.Drawing.Color.RoyalBlue;
+        	this.txtBase64Css.Location = new System.Drawing.Point(3, 3);
+        	this.txtBase64Css.Multiline = true;
+        	this.txtBase64Css.Name = "txtBase64Css";
+        	this.txtBase64Css.ReadOnly = true;
+        	this.txtBase64Css.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+        	this.txtBase64Css.Size = new System.Drawing.Size(979, 101);
+        	this.txtBase64Css.TabIndex = 12;
+        	this.txtBase64Css.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBase64Css_KeyDown);
+        	// 
+        	// tabPage3
+        	// 
+        	this.tabPage3.Controls.Add(this.txtBase64Sass);
+        	this.tabPage3.Location = new System.Drawing.Point(4, 22);
+        	this.tabPage3.Name = "tabPage3";
+        	this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+        	this.tabPage3.Size = new System.Drawing.Size(985, 107);
+        	this.tabPage3.TabIndex = 2;
+        	this.tabPage3.Text = "sass Base64代码";
+        	this.tabPage3.UseVisualStyleBackColor = true;
+        	// 
+        	// txtBase64Sass
+        	// 
+        	this.txtBase64Sass.BackColor = System.Drawing.Color.White;
+        	this.txtBase64Sass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+        	this.txtBase64Sass.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.txtBase64Sass.ForeColor = System.Drawing.Color.RoyalBlue;
+        	this.txtBase64Sass.Location = new System.Drawing.Point(3, 3);
+        	this.txtBase64Sass.Multiline = true;
+        	this.txtBase64Sass.Name = "txtBase64Sass";
+        	this.txtBase64Sass.ReadOnly = true;
+        	this.txtBase64Sass.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+        	this.txtBase64Sass.Size = new System.Drawing.Size(979, 101);
+        	this.txtBase64Sass.TabIndex = 12;
+        	this.txtBase64Sass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBase64Sass_KeyDown);
+        	// 
+        	// tabPage2
+        	// 
+        	this.tabPage2.Controls.Add(this.txtCss);
+        	this.tabPage2.Location = new System.Drawing.Point(4, 22);
+        	this.tabPage2.Name = "tabPage2";
+        	this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+        	this.tabPage2.Size = new System.Drawing.Size(985, 107);
+        	this.tabPage2.TabIndex = 1;
+        	this.tabPage2.Text = "css/less代码";
+        	this.tabPage2.UseVisualStyleBackColor = true;
+        	// 
+        	// txtCss
+        	// 
+        	this.txtCss.BackColor = System.Drawing.Color.White;
+        	this.txtCss.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+        	this.txtCss.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.txtCss.ForeColor = System.Drawing.Color.RoyalBlue;
+        	this.txtCss.Location = new System.Drawing.Point(3, 3);
+        	this.txtCss.Multiline = true;
+        	this.txtCss.Name = "txtCss";
+        	this.txtCss.ReadOnly = true;
+        	this.txtCss.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+        	this.txtCss.Size = new System.Drawing.Size(979, 101);
+        	this.txtCss.TabIndex = 19;
+        	this.txtCss.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCss_KeyDown);
+        	// 
+        	// tabPage1
+        	// 
+        	this.tabPage1.Controls.Add(this.txtSass);
+        	this.tabPage1.Location = new System.Drawing.Point(4, 22);
+        	this.tabPage1.Name = "tabPage1";
+        	this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+        	this.tabPage1.Size = new System.Drawing.Size(985, 107);
+        	this.tabPage1.TabIndex = 0;
+        	this.tabPage1.Text = "sass代码";
+        	this.tabPage1.UseVisualStyleBackColor = true;
+        	// 
+        	// txtSass
+        	// 
+        	this.txtSass.BackColor = System.Drawing.Color.White;
+        	this.txtSass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+        	this.txtSass.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.txtSass.ForeColor = System.Drawing.Color.RoyalBlue;
+        	this.txtSass.Location = new System.Drawing.Point(3, 3);
+        	this.txtSass.Multiline = true;
+        	this.txtSass.Name = "txtSass";
+        	this.txtSass.ReadOnly = true;
+        	this.txtSass.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+        	this.txtSass.Size = new System.Drawing.Size(979, 101);
+        	this.txtSass.TabIndex = 11;
+        	this.txtSass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSass_KeyDown);
+        	// 
+        	// tabControl
+        	// 
+        	this.tabControl.Controls.Add(this.tabPage1);
+        	this.tabControl.Controls.Add(this.tabPage2);
+        	this.tabControl.Controls.Add(this.tabPage3);
+        	this.tabControl.Controls.Add(this.tabPage4);
+        	this.tabControl.Controls.Add(this.tabPage5);
+        	this.tabControl.Location = new System.Drawing.Point(6, 95);
+        	this.tabControl.Name = "tabControl";
+        	this.tabControl.SelectedIndex = 0;
+        	this.tabControl.Size = new System.Drawing.Size(993, 133);
+        	this.tabControl.TabIndex = 21;
+        	// 
+        	// tabPage5
+        	// 
+        	this.tabPage5.Controls.Add(this.txtJs);
+        	this.tabPage5.Location = new System.Drawing.Point(4, 22);
+        	this.tabPage5.Name = "tabPage5";
+        	this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+        	this.tabPage5.Size = new System.Drawing.Size(985, 107);
+        	this.tabPage5.TabIndex = 4;
+        	this.tabPage5.Text = "JavaScript 数组代码";
+        	this.tabPage5.UseVisualStyleBackColor = true;
+        	// 
+        	// txtJs
+        	// 
+        	this.txtJs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+        	this.txtJs.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.txtJs.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+        	this.txtJs.Location = new System.Drawing.Point(3, 3);
+        	this.txtJs.Multiline = true;
+        	this.txtJs.Name = "txtJs";
+        	this.txtJs.Size = new System.Drawing.Size(979, 101);
+        	this.txtJs.TabIndex = 0;
+        	// 
         	// FormMain
         	// 
         	this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -578,19 +604,23 @@
         	this.panelBottom.PerformLayout();
         	this.panelPhone.ResumeLayout(false);
         	this.panelPhone.PerformLayout();
-        	this.tabControl.ResumeLayout(false);
-        	this.tabPage1.ResumeLayout(false);
-        	this.tabPage1.PerformLayout();
-        	this.tabPage2.ResumeLayout(false);
-        	this.tabPage2.PerformLayout();
-        	this.tabPage3.ResumeLayout(false);
-        	this.tabPage3.PerformLayout();
-        	this.tabPage4.ResumeLayout(false);
-        	this.tabPage4.PerformLayout();
         	this.tableLayoutPanel1.ResumeLayout(false);
         	this.panel1.ResumeLayout(false);
+        	this.tabPage4.ResumeLayout(false);
+        	this.tabPage4.PerformLayout();
+        	this.tabPage3.ResumeLayout(false);
+        	this.tabPage3.PerformLayout();
+        	this.tabPage2.ResumeLayout(false);
+        	this.tabPage2.PerformLayout();
+        	this.tabPage1.ResumeLayout(false);
+        	this.tabPage1.PerformLayout();
+        	this.tabControl.ResumeLayout(false);
+        	this.tabPage5.ResumeLayout(false);
+        	this.tabPage5.PerformLayout();
         	this.ResumeLayout(false);
         }
+        private System.Windows.Forms.TextBox txtJs;
+        private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.ComboBox ComboBoxOrderby;
         private System.Windows.Forms.Label orderby_label;
 
