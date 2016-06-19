@@ -50,7 +50,7 @@
         	this.buttonHRange = new System.Windows.Forms.Button();
         	this.buttonMakeBigImageCss = new System.Windows.Forms.Button();
         	this.panelBottom = new System.Windows.Forms.Panel();
-        	this.ComboBoxSoryby = new System.Windows.Forms.ComboBox();
+        	this.ComboBoxSortby = new System.Windows.Forms.ComboBox();
         	this.label6 = new System.Windows.Forms.Label();
         	this.label4 = new System.Windows.Forms.Label();
         	this.ComboBoxOrderby = new System.Windows.Forms.ComboBox();
@@ -321,7 +321,7 @@
         	// 
         	// panelBottom
         	// 
-        	this.panelBottom.Controls.Add(this.ComboBoxSoryby);
+        	this.panelBottom.Controls.Add(this.ComboBoxSortby);
         	this.panelBottom.Controls.Add(this.label6);
         	this.panelBottom.Controls.Add(this.label4);
         	this.panelBottom.Controls.Add(this.ComboBoxOrderby);
@@ -341,19 +341,19 @@
         	this.panelBottom.Size = new System.Drawing.Size(1002, 231);
         	this.panelBottom.TabIndex = 0;
         	// 
-        	// ComboBoxSoryby
+        	// ComboBoxSortby
         	// 
-        	this.ComboBoxSoryby.BackColor = System.Drawing.Color.White;
-        	this.ComboBoxSoryby.ForeColor = System.Drawing.Color.RoyalBlue;
-        	this.ComboBoxSoryby.Items.AddRange(new object[] {
+        	this.ComboBoxSortby.BackColor = System.Drawing.Color.White;
+        	this.ComboBoxSortby.ForeColor = System.Drawing.Color.RoyalBlue;
+        	this.ComboBoxSortby.Items.AddRange(new object[] {
         	        	        	"从小到大(ASC)",
         	        	        	"从大到小(DESC)"});
-        	this.ComboBoxSoryby.Location = new System.Drawing.Point(563, 7);
-        	this.ComboBoxSoryby.Name = "ComboBoxSoryby";
-        	this.ComboBoxSoryby.Size = new System.Drawing.Size(129, 20);
-        	this.ComboBoxSoryby.TabIndex = 27;
-        	this.ComboBoxSoryby.Text = "从小到大(ASC)";
-        	this.ComboBoxSoryby.SelectedIndexChanged += new System.EventHandler(this.ComboBoxSorybySelectedIndexChanged);
+        	this.ComboBoxSortby.Location = new System.Drawing.Point(563, 7);
+        	this.ComboBoxSortby.Name = "ComboBoxSortby";
+        	this.ComboBoxSortby.Size = new System.Drawing.Size(129, 20);
+        	this.ComboBoxSortby.TabIndex = 27;
+        	this.ComboBoxSortby.Text = "从小到大(ASC)";
+        	this.ComboBoxSortby.SelectedIndexChanged += new System.EventHandler(this.ComboBoxSotybySelectedIndexChanged);
         	// 
         	// label6
         	// 
@@ -658,7 +658,7 @@
         }
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox ComboBoxSoryby;
+        private System.Windows.Forms.ComboBox ComboBoxSortby;
         private System.Windows.Forms.TextBox txtJs;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.ComboBox ComboBoxOrderby;

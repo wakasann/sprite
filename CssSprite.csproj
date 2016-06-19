@@ -95,6 +95,7 @@
       <DependentUpon>AboutUs.cs</DependentUpon>
     </Compile>
     <Compile Include="Area.cs" />
+    <Compile Include="ComboboxItem.cs" />
     <Compile Include="EdgeSize.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
@@ -105,6 +106,7 @@
     <Compile Include="httpClass.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reverser.cs" />
     <Compile Include="Sprite.cs" />
     <Compile Include="SpriteFile.cs" />
     <Compile Include="Update.cs">

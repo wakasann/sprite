@@ -34,9 +34,10 @@ namespace CssSprite
         /// </summary>
 		private int orderbyMode = 0; //排序方式,排序的依据
 		private int sortbyMode  = 0; //排序方向,排序的方向
-		private const bool HORIZONTAL    = true ; //水平(横排)方向
-		private const bool VERTICAL      = false ; //垂直(竖排)方向
-		private bool horizontalScroll 	 = false; //记录当前panel中显示图片的方向，默认是使用垂直(竖排)方向，用于判断图片的显示方向是否水平(横排)
+		private const int HORIZONTAL    = 1 ; //水平(横排)方向
+		private const int VERTICAL      = 0 ; //垂直(竖排)方向,默认
+		private int horizontalScroll 	= 1 ; //记录当前panel中显示图片的方向，默认是使用垂直(竖排)方向，用于判断图片的显示方向是否水平(横排)
+		//private ImageInfo private_imageinfo;
         
         private VersionInfo newVersion;
         private List<ImageInfo> _imgList; //当前panel中图片
@@ -46,14 +47,18 @@ namespace CssSprite
         {
             internal ImageInfo(Image img, string name, string fileName)
             {
-                Image = img;
-                Name = name;
-                FileName = fileName;
+                Image 		= img;
+                Name 	 	= name;
+                FileName	= fileName;
+                Width   	= img.Width;
+                Height  	= img.Height;
             }
 
             internal readonly Image Image;
             internal readonly string Name;
             internal readonly string FileName;
+            internal readonly int    Width;
+            internal readonly int    Height; 
         }
 
         private Thread thread;
@@ -73,7 +78,7 @@ namespace CssSprite
             thread.Start();
             comboBoxImgType.DropDownStyle = ComboBoxStyle.DropDownList;
             ComboBoxOrderby.DropDownStyle = ComboBoxStyle.DropDownList;
-            ComboBoxSoryby.DropDownStyle  = ComboBoxStyle.DropDownList;
+            ComboBoxSortby.DropDownStyle  = ComboBoxStyle.DropDownList;
         }
 
         void panelImages_LostFocus(object sender, EventArgs e)
@@ -327,7 +332,7 @@ namespace CssSprite
             panelImages.Refresh();
         }
 
-
+		//选择多幅图片
         private void buttonBrowse_Click(object sender, EventArgs e)
         {
             if (!OpenFile(false)) {
@@ -346,6 +351,41 @@ namespace CssSprite
                 ButtonVRange_Click(null, EventArgs.Empty);
                 SetBase64();
             }
+        }
+        
+        //动态修改ComboBoxOrderby的Items
+        //@link http://stackoverflow.com/questions/3063320/combobox-adding-text-and-value-to-an-item-no-binding-source
+        //@link http://www.jb51.net/article/52615.htm
+        void changeBoxOrderbyItems(bool nameSort){
+        	
+        	ComboboxItem listItem0 = new ComboboxItem("0", "图片宽度");
+        	ComboboxItem listItem1 = new ComboboxItem("1", "图片高度");
+        	ComboboxItem listItem2 = new ComboboxItem("2", "文件名(数字)");
+        	ComboBoxOrderby.Items.Clear();
+        	if(nameSort){
+        		ComboBoxOrderby.Items.Add(listItem0);
+        		ComboBoxOrderby.Items.Add(listItem1);
+        		ComboBoxOrderby.Items.Add(listItem2);
+        		ComboBoxOrderby.SelectedIndex = orderbyMode;
+        		switch(orderbyMode){
+        			case 0:
+        				ComboBoxOrderby.SelectedItem = listItem0;
+        				break;
+        			case 1:
+        				ComboBoxOrderby.SelectedItem = listItem1;
+        			break;
+        			case 2:
+        				ComboBoxOrderby.SelectedItem = listItem2;
+        			break;
+        		}
+        	}else{
+        		ComboBoxOrderby.Items.Add(listItem0);
+        		ComboBoxOrderby.Items.Add(listItem1);
+        		if(orderbyMode == 2){
+        			ComboBoxOrderby.SelectedIndex = 0;
+        			ComboBoxOrderby.SelectedItem = listItem0;
+        		}
+        	}
         }
 
         private void btnSprite_Click(object sender, EventArgs e)
@@ -495,10 +535,14 @@ namespace CssSprite
         /// <param name="imageFileNames"></param>
         private void LoadImages(string[] imageFileNames)
         {
+        	//是否可以使用图片的名称进行排序的标志(flag)
+        	bool namesort = true;
+        	
             if (_imgList == null)
             {
                 _imgList = new List<ImageInfo>();
             }
+            
             foreach (string fileName in imageFileNames)
             {
                 if (IsImgExists(fileName))
@@ -508,40 +552,86 @@ namespace CssSprite
                 Image img = Image.FromFile(fileName);
                 string imgName = Path.GetFileNameWithoutExtension(fileName);
                 ImageInfo imgInfo = new ImageInfo(img, imgName, fileName);
+                //判断图片的名称是否字符串数字
+                if(namesort){
+                	namesort = IsNumber(imgName);
+//                	if(namesort){
+//                		MessageBox.Show("number");
+//                	}
+                }
+//                if(private_imageinfo == null){
+//                	private_imageinfo = imgInfo;
+//                }
                 img.Tag = imgInfo;
                 _imgList.Add(imgInfo);
             }
             //_imgList.Sort(ImageComparison);
             //_imgList.Sort((x, y) => { return -y.Name.CompareTo(x.Name); });
-            if(orderbyMode.Equals(0))
+            //修改排序依据的Combox的items
+            changeBoxOrderbyItems(namesort);
+            ImagesSort();
+        }
+        
+        //图片排序方法
+        private void ImagesSort(){
+        	if (_imgList == null)
             {
-            	_imgList.Sort(ImageSortByWidth);
-            }else if(orderbyMode.Equals(1))
-            {
-            	_imgList.Sort(ImageSortByHeight);
-            }else if(orderbyMode.Equals(2))
-            {
-            	_imgList = ImageSortByName(_imgList);
+                return;
             }
+//        	MessageBox.Show("order by"+orderbyMode);
+//        	MessageBox.Show("sort by"+sortbyMode);
+        	switch(orderbyMode)
+            {
+            	case 0:
+            		//根据图片的宽度
+            		_imgList.Sort(ImageOrderByWidth);
+            	break;
+            	case 1:
+            		//根据图片的高度
+            		_imgList.Sort(ImageOrderByHeight);
+            	break;
+            	case 2:
+            		//根据图片的名称
+            		//ImageOrderByName();
+            		_imgList.Sort(ImageOrderByName);
+            		//ImagesSort();
+            	break;
+            		
+            }
+        	
+//        	if(sortbyMode == 0){
+//        		 Reverser<ImageInfo> reverser = new Reverser<ImageInfo>(private_imageinfo.GetType(), "Name", ReverserInfo.Direction.ASC);
+//        		 _imgList.Sort(reverser);
+//        	}else{
+//        		Reverser<ImageInfo> reverser = new Reverser<ImageInfo>(private_imageinfo.GetType(), "Name", ReverserInfo.Direction.DESC);
+//        		_imgList.Sort(reverser);
+//        	}
+        	
+        	
         }
 		
         //根据图片的名称进行排序(使用了List最简单的排序方式)
-        List<ImageInfo> ImageSortByName(List<ImageInfo> _imgList)
+        //@link string 转int http://www.cnblogs.com/lgzslf/archive/2010/11/15/1877383.html
+        int ImageOrderByName(ImageInfo i1, ImageInfo i2)
         {
+        	int name1 = int.Parse(i1.Name);
+        	int name2 = int.Parse(i2.Name);
         	
-        	if(sortbyMode.Equals(0)){
-        		_imgList.Sort((x, y) => { return -y.Name.CompareTo(x.Name); });
-        	}else{
-        		_imgList.Sort((x, y) => { return -x.Name.CompareTo(y.Name); });
+        	if(sortbyMode == 0)
+        	{
+        		return name1 > name2 ? 1 : (name1 == name2 ? 0 : -1);
+        	}
+        	else
+        	{
+        		return name1 < name2 ? 1 : (name1 == name2 ? 0 : -1);
         	}
         	
-        	return _imgList;
         }
         
         //根据图片的宽度进行排序,方法重命名:ImageComparison=>ImageWidthSort
-        int ImageSortByWidth(ImageInfo i1, ImageInfo i2)
+        int ImageOrderByWidth(ImageInfo i1, ImageInfo i2)
         {
-        	if(sortbyMode.Equals(0))
+        	if(sortbyMode == 0)
         	{
         		return i1.Image.Width > i2.Image.Width ? 1 : (i1.Image.Width == i2.Image.Width ? 0 : -1);
         	}
@@ -553,8 +643,8 @@ namespace CssSprite
         }
         
         //根据图片的高度进行排序
-        int ImageSortByHeight(ImageInfo i1, ImageInfo i2){
-        	if(sortbyMode.Equals(0))
+        int ImageOrderByHeight(ImageInfo i1, ImageInfo i2){
+        	if(sortbyMode == 0)
         	{
         		return i1.Image.Height > i2.Image.Height ? 1 : (i1.Image.Height == i2.Image.Height ? 0 : -1);
         	}
@@ -1271,9 +1361,9 @@ namespace CssSprite
         }
         
         //降序(Desc),升序(Asc)的选择框
-        void ComboBoxSorybySelectedIndexChanged(object sender, EventArgs e)
+        void ComboBoxSotybySelectedIndexChanged(object sender, EventArgs e)
         {
-        	sortbyMode = ComboBoxSoryby.SelectedIndex;
+        	sortbyMode = ComboBoxSortby.SelectedIndex;
         	if (!CheckFileIsLoaded()) return;
         	ComboBoxSelectSort();
         	
@@ -1285,7 +1375,8 @@ namespace CssSprite
         /// <returns></returns>
         void ComboBoxSelectSort()
         {
-        	LoadImages(openFileDialog.FileNames);
+        	//LoadImages(openFileDialog.FileNames);
+        	ImagesSort();
         	if(horizontalScroll == VERTICAL){
         		ButtonVRange_Click(null, EventArgs.Empty);
         	}
@@ -1293,9 +1384,20 @@ namespace CssSprite
         	{
         		buttonHRange_Click(null,EventArgs.Empty);
         	}
-        	
-            SetBase64();
         }
+        
+        /// <summary>
+        /// 判断一个字符串是否是一个数字字符串
+        /// @link http://www.cnblogs.com/maijin/archive/2012/12/14/2818214.html
+        /// @link 
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsNumber(string strNumber)
+		{
+			Regex regex = new Regex("[^0-9]+$");
+			return !regex.IsMatch(strNumber);
+		}
+
         
     }
 }
