@@ -50,6 +50,9 @@
         	this.buttonHRange = new System.Windows.Forms.Button();
         	this.buttonMakeBigImageCss = new System.Windows.Forms.Button();
         	this.panelBottom = new System.Windows.Forms.Panel();
+        	this.ComboBoxSoryby = new System.Windows.Forms.ComboBox();
+        	this.label6 = new System.Windows.Forms.Label();
+        	this.label4 = new System.Windows.Forms.Label();
         	this.ComboBoxOrderby = new System.Windows.Forms.ComboBox();
         	this.orderby_label = new System.Windows.Forms.Label();
         	this.panelPhone = new System.Windows.Forms.Panel();
@@ -57,31 +60,31 @@
         	this.linkLabelLess = new System.Windows.Forms.LinkLabel();
         	this.linkLabelSass = new System.Windows.Forms.LinkLabel();
         	this.linkLabelHelp = new System.Windows.Forms.LinkLabel();
+        	this.tabControl = new System.Windows.Forms.TabControl();
+        	this.tabPage1 = new System.Windows.Forms.TabPage();
+        	this.txtSass = new System.Windows.Forms.TextBox();
+        	this.tabPage2 = new System.Windows.Forms.TabPage();
+        	this.txtCss = new System.Windows.Forms.TextBox();
+        	this.tabPage3 = new System.Windows.Forms.TabPage();
+        	this.txtBase64Sass = new System.Windows.Forms.TextBox();
+        	this.tabPage4 = new System.Windows.Forms.TabPage();
+        	this.txtBase64Css = new System.Windows.Forms.TextBox();
+        	this.tabPage5 = new System.Windows.Forms.TabPage();
+        	this.txtJs = new System.Windows.Forms.TextBox();
         	this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
         	this.panel1 = new System.Windows.Forms.Panel();
         	this.panelImages = new System.Windows.Forms.Panel();
-        	this.tabPage4 = new System.Windows.Forms.TabPage();
-        	this.txtBase64Css = new System.Windows.Forms.TextBox();
-        	this.tabPage3 = new System.Windows.Forms.TabPage();
-        	this.txtBase64Sass = new System.Windows.Forms.TextBox();
-        	this.tabPage2 = new System.Windows.Forms.TabPage();
-        	this.txtCss = new System.Windows.Forms.TextBox();
-        	this.tabPage1 = new System.Windows.Forms.TabPage();
-        	this.txtSass = new System.Windows.Forms.TextBox();
-        	this.tabControl = new System.Windows.Forms.TabControl();
-        	this.tabPage5 = new System.Windows.Forms.TabPage();
-        	this.txtJs = new System.Windows.Forms.TextBox();
         	this.panelTop.SuspendLayout();
         	this.panelBottom.SuspendLayout();
         	this.panelPhone.SuspendLayout();
+        	this.tabControl.SuspendLayout();
+        	this.tabPage1.SuspendLayout();
+        	this.tabPage2.SuspendLayout();
+        	this.tabPage3.SuspendLayout();
+        	this.tabPage4.SuspendLayout();
+        	this.tabPage5.SuspendLayout();
         	this.tableLayoutPanel1.SuspendLayout();
         	this.panel1.SuspendLayout();
-        	this.tabPage4.SuspendLayout();
-        	this.tabPage3.SuspendLayout();
-        	this.tabPage2.SuspendLayout();
-        	this.tabPage1.SuspendLayout();
-        	this.tabControl.SuspendLayout();
-        	this.tabPage5.SuspendLayout();
         	this.SuspendLayout();
         	// 
         	// openFileDialog
@@ -107,11 +110,11 @@
         	// label1
         	// 
         	this.label1.AutoSize = true;
-        	this.label1.Location = new System.Drawing.Point(583, 69);
+        	this.label1.Location = new System.Drawing.Point(580, 69);
         	this.label1.Name = "label1";
         	this.label1.Size = new System.Drawing.Size(101, 12);
         	this.label1.TabIndex = 3;
-        	this.label1.Text = "雪碧图文件类型：";
+        	this.label1.Text = "生成雪碧图格式：";
         	// 
         	// label2
         	// 
@@ -318,6 +321,9 @@
         	// 
         	// panelBottom
         	// 
+        	this.panelBottom.Controls.Add(this.ComboBoxSoryby);
+        	this.panelBottom.Controls.Add(this.label6);
+        	this.panelBottom.Controls.Add(this.label4);
         	this.panelBottom.Controls.Add(this.ComboBoxOrderby);
         	this.panelBottom.Controls.Add(this.orderby_label);
         	this.panelBottom.Controls.Add(this.panelPhone);
@@ -330,10 +336,40 @@
         	this.panelBottom.Controls.Add(this.label5);
         	this.panelBottom.Controls.Add(this.label2);
         	this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-        	this.panelBottom.Location = new System.Drawing.Point(3, 311);
+        	this.panelBottom.Location = new System.Drawing.Point(3, 318);
         	this.panelBottom.Name = "panelBottom";
         	this.panelBottom.Size = new System.Drawing.Size(1002, 231);
         	this.panelBottom.TabIndex = 0;
+        	// 
+        	// ComboBoxSoryby
+        	// 
+        	this.ComboBoxSoryby.BackColor = System.Drawing.Color.White;
+        	this.ComboBoxSoryby.ForeColor = System.Drawing.Color.RoyalBlue;
+        	this.ComboBoxSoryby.Items.AddRange(new object[] {
+        	        	        	"从小到大(ASC)",
+        	        	        	"从大到小(DESC)"});
+        	this.ComboBoxSoryby.Location = new System.Drawing.Point(563, 7);
+        	this.ComboBoxSoryby.Name = "ComboBoxSoryby";
+        	this.ComboBoxSoryby.Size = new System.Drawing.Size(129, 20);
+        	this.ComboBoxSoryby.TabIndex = 27;
+        	this.ComboBoxSoryby.Text = "从小到大(ASC)";
+        	this.ComboBoxSoryby.SelectedIndexChanged += new System.EventHandler(this.ComboBoxSorybySelectedIndexChanged);
+        	// 
+        	// label6
+        	// 
+        	this.label6.Location = new System.Drawing.Point(517, 9);
+        	this.label6.Name = "label6";
+        	this.label6.Size = new System.Drawing.Size(53, 18);
+        	this.label6.TabIndex = 26;
+        	this.label6.Text = "排序,从";
+        	// 
+        	// label4
+        	// 
+        	this.label4.Location = new System.Drawing.Point(690, 9);
+        	this.label4.Name = "label4";
+        	this.label4.Size = new System.Drawing.Size(56, 17);
+        	this.label4.TabIndex = 25;
+        	this.label4.Text = "进行排序";
         	// 
         	// ComboBoxOrderby
         	// 
@@ -343,12 +379,13 @@
         	        	        	"图片宽度",
         	        	        	"图片高度",
         	        	        	"文件名(数字)"});
-        	this.ComboBoxOrderby.Location = new System.Drawing.Point(409, 7);
+        	this.ComboBoxOrderby.Location = new System.Drawing.Point(390, 7);
         	this.ComboBoxOrderby.Name = "ComboBoxOrderby";
         	this.ComboBoxOrderby.RightToLeft = System.Windows.Forms.RightToLeft.No;
         	this.ComboBoxOrderby.Size = new System.Drawing.Size(121, 20);
         	this.ComboBoxOrderby.TabIndex = 24;
         	this.ComboBoxOrderby.Text = "图片宽度";
+        	this.ComboBoxOrderby.SelectedIndexChanged += new System.EventHandler(this.ComboBoxOrderbySelectedIndexChanged);
         	// 
         	// orderby_label
         	// 
@@ -356,7 +393,7 @@
         	this.orderby_label.Name = "orderby_label";
         	this.orderby_label.Size = new System.Drawing.Size(61, 15);
         	this.orderby_label.TabIndex = 23;
-        	this.orderby_label.Text = "排序方式:";
+        	this.orderby_label.Text = "根据:";
         	// 
         	// panelPhone
         	// 
@@ -412,121 +449,18 @@
         	this.linkLabelHelp.Text = "手机端页面rem自适应脚本";
         	this.linkLabelHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelHelp_LinkClicked);
         	// 
-        	// tableLayoutPanel1
+        	// tabControl
         	// 
-        	this.tableLayoutPanel1.ColumnCount = 1;
-        	this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-        	this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
-        	this.tableLayoutPanel1.Controls.Add(this.panelTop, 0, 0);
-        	this.tableLayoutPanel1.Controls.Add(this.panelBottom, 0, 2);
-        	this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-        	this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-        	this.tableLayoutPanel1.RowCount = 3;
-        	this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-        	this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-        	this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 237F));
-        	this.tableLayoutPanel1.Size = new System.Drawing.Size(1008, 545);
-        	this.tableLayoutPanel1.TabIndex = 0;
-        	// 
-        	// panel1
-        	// 
-        	this.panel1.BackgroundImage = global::CssSprite.Properties.Resources.QQ截图201504271504082;
-        	this.panel1.Controls.Add(this.panelImages);
-        	this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.panel1.Location = new System.Drawing.Point(3, 63);
-        	this.panel1.Name = "panel1";
-        	this.panel1.Size = new System.Drawing.Size(1002, 242);
-        	this.panel1.TabIndex = 0;
-        	// 
-        	// panelImages
-        	// 
-        	this.panelImages.AutoScroll = true;
-        	this.panelImages.BackColor = System.Drawing.Color.Transparent;
-        	this.panelImages.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-        	this.panelImages.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.panelImages.Location = new System.Drawing.Point(0, 0);
-        	this.panelImages.Name = "panelImages";
-        	this.panelImages.Size = new System.Drawing.Size(1002, 242);
-        	this.panelImages.TabIndex = 0;
-        	// 
-        	// tabPage4
-        	// 
-        	this.tabPage4.Controls.Add(this.txtBase64Css);
-        	this.tabPage4.Location = new System.Drawing.Point(4, 22);
-        	this.tabPage4.Name = "tabPage4";
-        	this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-        	this.tabPage4.Size = new System.Drawing.Size(985, 107);
-        	this.tabPage4.TabIndex = 3;
-        	this.tabPage4.Text = "css Base64代码";
-        	this.tabPage4.UseVisualStyleBackColor = true;
-        	// 
-        	// txtBase64Css
-        	// 
-        	this.txtBase64Css.BackColor = System.Drawing.Color.White;
-        	this.txtBase64Css.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-        	this.txtBase64Css.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.txtBase64Css.ForeColor = System.Drawing.Color.RoyalBlue;
-        	this.txtBase64Css.Location = new System.Drawing.Point(3, 3);
-        	this.txtBase64Css.Multiline = true;
-        	this.txtBase64Css.Name = "txtBase64Css";
-        	this.txtBase64Css.ReadOnly = true;
-        	this.txtBase64Css.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-        	this.txtBase64Css.Size = new System.Drawing.Size(979, 101);
-        	this.txtBase64Css.TabIndex = 12;
-        	this.txtBase64Css.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBase64Css_KeyDown);
-        	// 
-        	// tabPage3
-        	// 
-        	this.tabPage3.Controls.Add(this.txtBase64Sass);
-        	this.tabPage3.Location = new System.Drawing.Point(4, 22);
-        	this.tabPage3.Name = "tabPage3";
-        	this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-        	this.tabPage3.Size = new System.Drawing.Size(985, 107);
-        	this.tabPage3.TabIndex = 2;
-        	this.tabPage3.Text = "sass Base64代码";
-        	this.tabPage3.UseVisualStyleBackColor = true;
-        	// 
-        	// txtBase64Sass
-        	// 
-        	this.txtBase64Sass.BackColor = System.Drawing.Color.White;
-        	this.txtBase64Sass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-        	this.txtBase64Sass.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.txtBase64Sass.ForeColor = System.Drawing.Color.RoyalBlue;
-        	this.txtBase64Sass.Location = new System.Drawing.Point(3, 3);
-        	this.txtBase64Sass.Multiline = true;
-        	this.txtBase64Sass.Name = "txtBase64Sass";
-        	this.txtBase64Sass.ReadOnly = true;
-        	this.txtBase64Sass.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-        	this.txtBase64Sass.Size = new System.Drawing.Size(979, 101);
-        	this.txtBase64Sass.TabIndex = 12;
-        	this.txtBase64Sass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBase64Sass_KeyDown);
-        	// 
-        	// tabPage2
-        	// 
-        	this.tabPage2.Controls.Add(this.txtCss);
-        	this.tabPage2.Location = new System.Drawing.Point(4, 22);
-        	this.tabPage2.Name = "tabPage2";
-        	this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-        	this.tabPage2.Size = new System.Drawing.Size(985, 107);
-        	this.tabPage2.TabIndex = 1;
-        	this.tabPage2.Text = "css/less代码";
-        	this.tabPage2.UseVisualStyleBackColor = true;
-        	// 
-        	// txtCss
-        	// 
-        	this.txtCss.BackColor = System.Drawing.Color.White;
-        	this.txtCss.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-        	this.txtCss.Dock = System.Windows.Forms.DockStyle.Fill;
-        	this.txtCss.ForeColor = System.Drawing.Color.RoyalBlue;
-        	this.txtCss.Location = new System.Drawing.Point(3, 3);
-        	this.txtCss.Multiline = true;
-        	this.txtCss.Name = "txtCss";
-        	this.txtCss.ReadOnly = true;
-        	this.txtCss.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-        	this.txtCss.Size = new System.Drawing.Size(979, 101);
-        	this.txtCss.TabIndex = 19;
-        	this.txtCss.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCss_KeyDown);
+        	this.tabControl.Controls.Add(this.tabPage1);
+        	this.tabControl.Controls.Add(this.tabPage2);
+        	this.tabControl.Controls.Add(this.tabPage3);
+        	this.tabControl.Controls.Add(this.tabPage4);
+        	this.tabControl.Controls.Add(this.tabPage5);
+        	this.tabControl.Location = new System.Drawing.Point(6, 95);
+        	this.tabControl.Name = "tabControl";
+        	this.tabControl.SelectedIndex = 0;
+        	this.tabControl.Size = new System.Drawing.Size(993, 133);
+        	this.tabControl.TabIndex = 21;
         	// 
         	// tabPage1
         	// 
@@ -554,18 +488,83 @@
         	this.txtSass.TabIndex = 11;
         	this.txtSass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSass_KeyDown);
         	// 
-        	// tabControl
+        	// tabPage2
         	// 
-        	this.tabControl.Controls.Add(this.tabPage1);
-        	this.tabControl.Controls.Add(this.tabPage2);
-        	this.tabControl.Controls.Add(this.tabPage3);
-        	this.tabControl.Controls.Add(this.tabPage4);
-        	this.tabControl.Controls.Add(this.tabPage5);
-        	this.tabControl.Location = new System.Drawing.Point(6, 95);
-        	this.tabControl.Name = "tabControl";
-        	this.tabControl.SelectedIndex = 0;
-        	this.tabControl.Size = new System.Drawing.Size(993, 133);
-        	this.tabControl.TabIndex = 21;
+        	this.tabPage2.Controls.Add(this.txtCss);
+        	this.tabPage2.Location = new System.Drawing.Point(4, 22);
+        	this.tabPage2.Name = "tabPage2";
+        	this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+        	this.tabPage2.Size = new System.Drawing.Size(985, 107);
+        	this.tabPage2.TabIndex = 1;
+        	this.tabPage2.Text = "css/less代码";
+        	this.tabPage2.UseVisualStyleBackColor = true;
+        	// 
+        	// txtCss
+        	// 
+        	this.txtCss.BackColor = System.Drawing.Color.White;
+        	this.txtCss.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+        	this.txtCss.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.txtCss.ForeColor = System.Drawing.Color.RoyalBlue;
+        	this.txtCss.Location = new System.Drawing.Point(3, 3);
+        	this.txtCss.Multiline = true;
+        	this.txtCss.Name = "txtCss";
+        	this.txtCss.ReadOnly = true;
+        	this.txtCss.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+        	this.txtCss.Size = new System.Drawing.Size(979, 101);
+        	this.txtCss.TabIndex = 19;
+        	this.txtCss.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCss_KeyDown);
+        	// 
+        	// tabPage3
+        	// 
+        	this.tabPage3.Controls.Add(this.txtBase64Sass);
+        	this.tabPage3.Location = new System.Drawing.Point(4, 22);
+        	this.tabPage3.Name = "tabPage3";
+        	this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+        	this.tabPage3.Size = new System.Drawing.Size(985, 107);
+        	this.tabPage3.TabIndex = 2;
+        	this.tabPage3.Text = "sass Base64代码";
+        	this.tabPage3.UseVisualStyleBackColor = true;
+        	// 
+        	// txtBase64Sass
+        	// 
+        	this.txtBase64Sass.BackColor = System.Drawing.Color.White;
+        	this.txtBase64Sass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+        	this.txtBase64Sass.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.txtBase64Sass.ForeColor = System.Drawing.Color.RoyalBlue;
+        	this.txtBase64Sass.Location = new System.Drawing.Point(3, 3);
+        	this.txtBase64Sass.Multiline = true;
+        	this.txtBase64Sass.Name = "txtBase64Sass";
+        	this.txtBase64Sass.ReadOnly = true;
+        	this.txtBase64Sass.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+        	this.txtBase64Sass.Size = new System.Drawing.Size(979, 101);
+        	this.txtBase64Sass.TabIndex = 12;
+        	this.txtBase64Sass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBase64Sass_KeyDown);
+        	// 
+        	// tabPage4
+        	// 
+        	this.tabPage4.Controls.Add(this.txtBase64Css);
+        	this.tabPage4.Location = new System.Drawing.Point(4, 22);
+        	this.tabPage4.Name = "tabPage4";
+        	this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+        	this.tabPage4.Size = new System.Drawing.Size(985, 107);
+        	this.tabPage4.TabIndex = 3;
+        	this.tabPage4.Text = "css Base64代码";
+        	this.tabPage4.UseVisualStyleBackColor = true;
+        	// 
+        	// txtBase64Css
+        	// 
+        	this.txtBase64Css.BackColor = System.Drawing.Color.White;
+        	this.txtBase64Css.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+        	this.txtBase64Css.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.txtBase64Css.ForeColor = System.Drawing.Color.RoyalBlue;
+        	this.txtBase64Css.Location = new System.Drawing.Point(3, 3);
+        	this.txtBase64Css.Multiline = true;
+        	this.txtBase64Css.Name = "txtBase64Css";
+        	this.txtBase64Css.ReadOnly = true;
+        	this.txtBase64Css.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+        	this.txtBase64Css.Size = new System.Drawing.Size(979, 101);
+        	this.txtBase64Css.TabIndex = 12;
+        	this.txtBase64Css.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBase64Css_KeyDown);
         	// 
         	// tabPage5
         	// 
@@ -589,11 +588,49 @@
         	this.txtJs.Size = new System.Drawing.Size(979, 101);
         	this.txtJs.TabIndex = 0;
         	// 
+        	// tableLayoutPanel1
+        	// 
+        	this.tableLayoutPanel1.ColumnCount = 1;
+        	this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+        	this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
+        	this.tableLayoutPanel1.Controls.Add(this.panelTop, 0, 0);
+        	this.tableLayoutPanel1.Controls.Add(this.panelBottom, 0, 2);
+        	this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+        	this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+        	this.tableLayoutPanel1.RowCount = 3;
+        	this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+        	this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+        	this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 237F));
+        	this.tableLayoutPanel1.Size = new System.Drawing.Size(1008, 552);
+        	this.tableLayoutPanel1.TabIndex = 0;
+        	// 
+        	// panel1
+        	// 
+        	this.panel1.BackgroundImage = global::CssSprite.Properties.Resources.QQ截图201504271504082;
+        	this.panel1.Controls.Add(this.panelImages);
+        	this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.panel1.Location = new System.Drawing.Point(3, 63);
+        	this.panel1.Name = "panel1";
+        	this.panel1.Size = new System.Drawing.Size(1002, 249);
+        	this.panel1.TabIndex = 0;
+        	// 
+        	// panelImages
+        	// 
+        	this.panelImages.AutoScroll = true;
+        	this.panelImages.BackColor = System.Drawing.Color.Transparent;
+        	this.panelImages.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+        	this.panelImages.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.panelImages.Location = new System.Drawing.Point(0, 0);
+        	this.panelImages.Name = "panelImages";
+        	this.panelImages.Size = new System.Drawing.Size(1002, 249);
+        	this.panelImages.TabIndex = 0;
+        	// 
         	// FormMain
         	// 
         	this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
         	this.BackColor = System.Drawing.Color.White;
-        	this.ClientSize = new System.Drawing.Size(1008, 545);
+        	this.ClientSize = new System.Drawing.Size(1008, 552);
         	this.Controls.Add(this.tableLayoutPanel1);
         	this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
         	this.Name = "FormMain";
@@ -604,21 +641,24 @@
         	this.panelBottom.PerformLayout();
         	this.panelPhone.ResumeLayout(false);
         	this.panelPhone.PerformLayout();
-        	this.tableLayoutPanel1.ResumeLayout(false);
-        	this.panel1.ResumeLayout(false);
-        	this.tabPage4.ResumeLayout(false);
-        	this.tabPage4.PerformLayout();
-        	this.tabPage3.ResumeLayout(false);
-        	this.tabPage3.PerformLayout();
-        	this.tabPage2.ResumeLayout(false);
-        	this.tabPage2.PerformLayout();
+        	this.tabControl.ResumeLayout(false);
         	this.tabPage1.ResumeLayout(false);
         	this.tabPage1.PerformLayout();
-        	this.tabControl.ResumeLayout(false);
+        	this.tabPage2.ResumeLayout(false);
+        	this.tabPage2.PerformLayout();
+        	this.tabPage3.ResumeLayout(false);
+        	this.tabPage3.PerformLayout();
+        	this.tabPage4.ResumeLayout(false);
+        	this.tabPage4.PerformLayout();
         	this.tabPage5.ResumeLayout(false);
         	this.tabPage5.PerformLayout();
+        	this.tableLayoutPanel1.ResumeLayout(false);
+        	this.panel1.ResumeLayout(false);
         	this.ResumeLayout(false);
         }
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox ComboBoxSoryby;
         private System.Windows.Forms.TextBox txtJs;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.ComboBox ComboBoxOrderby;

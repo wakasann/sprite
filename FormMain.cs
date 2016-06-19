@@ -32,11 +32,14 @@ namespace CssSprite
         /// <summary>
         /// 排序
         /// </summary>
-		private int orderby_mode = 0; //排序方式
-		private int orderby_direction = 0; //排序方向
+		private int orderbyMode = 0; //排序方式,排序的依据
+		private int sortbyMode  = 0; //排序方向,排序的方向
+		private const bool HORIZONTAL    = true ; //水平(横排)方向
+		private const bool VERTICAL      = false ; //垂直(竖排)方向
+		private bool horizontalScroll 	 = false; //记录当前panel中显示图片的方向，默认是使用垂直(竖排)方向，用于判断图片的显示方向是否水平(横排)
         
         private VersionInfo newVersion;
-        private List<ImageInfo> _imgList;
+        private List<ImageInfo> _imgList; //当前panel中图片
         private string dialogFile = string.Empty;
         private string basePath;
         internal class ImageInfo
@@ -70,6 +73,7 @@ namespace CssSprite
             thread.Start();
             comboBoxImgType.DropDownStyle = ComboBoxStyle.DropDownList;
             ComboBoxOrderby.DropDownStyle = ComboBoxStyle.DropDownList;
+            ComboBoxSoryby.DropDownStyle  = ComboBoxStyle.DropDownList;
         }
 
         void panelImages_LostFocus(object sender, EventArgs e)
@@ -508,13 +512,58 @@ namespace CssSprite
                 _imgList.Add(imgInfo);
             }
             //_imgList.Sort(ImageComparison);
-            _imgList.Sort((x, y) => { return -y.Name.CompareTo(x.Name); });
+            //_imgList.Sort((x, y) => { return -y.Name.CompareTo(x.Name); });
+            if(orderbyMode.Equals(0))
+            {
+            	_imgList.Sort(ImageSortByWidth);
+            }else if(orderbyMode.Equals(1))
+            {
+            	_imgList.Sort(ImageSortByHeight);
+            }else if(orderbyMode.Equals(2))
+            {
+            	_imgList = ImageSortByName(_imgList);
+            }
         }
-
-        int ImageComparison(ImageInfo i1, ImageInfo i2)
+		
+        //根据图片的名称进行排序(使用了List最简单的排序方式)
+        List<ImageInfo> ImageSortByName(List<ImageInfo> _imgList)
         {
-            return i1.Image.Width > i2.Image.Width ? 1 : (i1.Image.Width == i2.Image.Width ? 0 : -1);
+        	
+        	if(sortbyMode.Equals(0)){
+        		_imgList.Sort((x, y) => { return -y.Name.CompareTo(x.Name); });
+        	}else{
+        		_imgList.Sort((x, y) => { return -x.Name.CompareTo(y.Name); });
+        	}
+        	
+        	return _imgList;
         }
+        
+        //根据图片的宽度进行排序,方法重命名:ImageComparison=>ImageWidthSort
+        int ImageSortByWidth(ImageInfo i1, ImageInfo i2)
+        {
+        	if(sortbyMode.Equals(0))
+        	{
+        		return i1.Image.Width > i2.Image.Width ? 1 : (i1.Image.Width == i2.Image.Width ? 0 : -1);
+        	}
+        	else
+        	{
+        		return i1.Image.Width < i2.Image.Width ? 1 : (i1.Image.Width == i2.Image.Width ? 0 : -1);
+        	}
+            
+        }
+        
+        //根据图片的高度进行排序
+        int ImageSortByHeight(ImageInfo i1, ImageInfo i2){
+        	if(sortbyMode.Equals(0))
+        	{
+        		return i1.Image.Height > i2.Image.Height ? 1 : (i1.Image.Height == i2.Image.Height ? 0 : -1);
+        	}
+        	else
+        	{
+        		return i1.Image.Height < i2.Image.Height ? 1 : (i1.Image.Height == i2.Image.Height ? 0 : -1);
+        	}
+        }
+        
 
         /// <summary>
         /// 验证是否是多个文件
@@ -525,11 +574,26 @@ namespace CssSprite
             string[] files = openFileDialog.FileNames;
             if (files == null || (openFileDialog.Multiselect ? files.Length < 2 : files.Length <0))
             {
-                MessageBox.Show("请选择多个图片文件。");
+            	MessageBox.Show("请选择多个图片文件。");
                 return false;
             }
             return true;
         }
+        
+         /// <summary>
+        /// 验证panel是否加载了图片
+        /// </summary>
+        /// <returns>bool</returns>
+        private bool CheckFileIsLoaded()
+        {
+            string[] files = openFileDialog.FileNames;
+            if (files == null || (openFileDialog.Multiselect ? files.Length < 2 : files.Length <0))
+            {
+                return false;
+            }
+            return true;
+        }
+       	
 
         /// <summary>
         /// 选中的单张图片
@@ -551,6 +615,7 @@ namespace CssSprite
         private void ButtonVRange_Click(object sender, EventArgs e)
         {
             if (!AssertFiles()) return;
+            horizontalScroll = VERTICAL; //记录当前图片排的方式是垂直(横排)
             panelImages.Controls.Clear();
             int left = 0;
             int top = 0;
@@ -671,11 +736,13 @@ namespace CssSprite
             var _left = string.Empty;
             var _top = string.Empty;
             
-            if (isSass || isPhone)
+            if (isSass && isPhone)
             {
-//                _left = left == 0 ? "0" : "0 " + "-{2}" + left.ToString() + unit;
-//                _top = top == 0 ? "0" : "0 " + "-{2}" + top.ToString() + unit;
-				  _left = left == 0 ? "0" : (0 - left).ToString() + unit;
+                _left = left == 0 ? "0" : "0 " + "-{2}" + left.ToString() + unit;
+                _top = top == 0 ? "0" : "0 " + "-{2}" + top.ToString() + unit;
+
+            }else if(isSass && !isPhone){
+            	  _left = left == 0 ? "0" : (0 - left).ToString() + unit;
                   _top = top == 0 ? "0" : (0 - top).ToString() + unit;
             }
             else {
@@ -1027,6 +1094,7 @@ namespace CssSprite
         private void buttonHRange_Click(object sender, EventArgs e)
         {
             if (!AssertFiles()) return;
+            horizontalScroll = HORIZONTAL; ////记录当前图片排的方式是水平(竖排)
             panelImages.Controls.Clear();
             int left = 0;
             int top = 0;
@@ -1193,7 +1261,41 @@ namespace CssSprite
             Process.Start("https://csssprite.herokuapp.com/lessVar");
         }
         
+        //排序的依据
+        void ComboBoxOrderbySelectedIndexChanged(object sender, EventArgs e)
+        {
+        	orderbyMode = ComboBoxOrderby.SelectedIndex;
+        	//MessageBox.Show(orderbyMode+"");
+        	if (!CheckFileIsLoaded()) return;
+        	ComboBoxSelectSort();
+        }
         
+        //降序(Desc),升序(Asc)的选择框
+        void ComboBoxSorybySelectedIndexChanged(object sender, EventArgs e)
+        {
+        	sortbyMode = ComboBoxSoryby.SelectedIndex;
+        	if (!CheckFileIsLoaded()) return;
+        	ComboBoxSelectSort();
+        	
+        }
+        
+        /// <summary>
+        /// 排序两个选择框Changeed中的相同代码
+        /// </summary>
+        /// <returns></returns>
+        void ComboBoxSelectSort()
+        {
+        	LoadImages(openFileDialog.FileNames);
+        	if(horizontalScroll == VERTICAL){
+        		ButtonVRange_Click(null, EventArgs.Empty);
+        	}
+        	else
+        	{
+        		buttonHRange_Click(null,EventArgs.Empty);
+        	}
+        	
+            SetBase64();
+        }
         
     }
 }
