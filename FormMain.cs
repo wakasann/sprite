@@ -710,14 +710,24 @@ namespace CssSprite
             int left = 0;
             int top = 0;
             int currentHeight = 0;
+            int currentWidth = 0; //记录最大的width，也决定left的值
             foreach (ImageInfo ii in _imgList)
             {
                 Image img = ii.Image;
-                left = 0;
+                //用于一列中记录最大的宽度
+                if(img.Width > currentWidth){
+                	currentWidth = img.Width;
+                }
+                if((currentHeight + img.Height) >= Int16.MaxValue){
+                	left += currentWidth;
+                	currentHeight  = 0;
+                	currentWidth = 0; //重新赋值最大宽度为0，用于记录换列之后的最大宽度
+                }
+                
                 top = currentHeight;
-
                 AddPictureBox(img, left, top);
                 currentHeight += img.Height;
+                
             }
             panelImages.ResumeLayout(false);
             SetCssText();
@@ -1188,9 +1198,22 @@ namespace CssSprite
             panelImages.Controls.Clear();
             int left = 0;
             int top = 0;
+            int currentHeight = 0; //记录一行中，最大的高度
             foreach (ImageInfo ii in _imgList)
             {
                 Image img = ii.Image;
+                
+                //判断一行中图片高度是否大于记录的最大高度
+                if(img.Height > currentHeight){
+                	currentHeight = img.Height;
+                }
+                //当left和图片的宽度大于Int16的最大值时，需要换行显示
+                if((left + img.Width) > Int16.MaxValue){
+                	top += currentHeight;
+                	left = 0; //初始化left的值
+                	currentHeight = 0; //重新赋值最大高度为0，用于记录换行之后的最大高度
+                }
+                
                 AddPictureBox(img, left, top);
                 left += img.Width;
             }

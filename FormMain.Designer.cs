@@ -585,6 +585,7 @@
         	this.txtJs.Location = new System.Drawing.Point(3, 3);
         	this.txtJs.Multiline = true;
         	this.txtJs.Name = "txtJs";
+        	this.txtJs.ScrollBars = System.Windows.Forms.ScrollBars.Both;
         	this.txtJs.Size = new System.Drawing.Size(979, 101);
         	this.txtJs.TabIndex = 0;
         	// 
