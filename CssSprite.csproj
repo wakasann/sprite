@@ -33,15 +33,10 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <NoWin32Manifest>False</NoWin32Manifest>
-    <SignAssembly>False</SignAssembly>
-    <DelaySign>False</DelaySign>
-    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
     <NoStdLib>False</NoStdLib>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
-    <RunCodeAnalysis>False</RunCodeAnalysis>
-    <SourceAnalysisOverrideSettingsFile>C:\Users\Administrator\AppData\Roaming\ICSharpCode/SharpDevelop4\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -66,7 +61,6 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
     <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
-    <StartAction>Project</StartAction>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
     <BaseAddress>4194304</BaseAddress>
@@ -100,6 +94,7 @@
       <DependentUpon>AboutUs.cs</DependentUpon>
     </Compile>
     <Compile Include="Area.cs" />
+    <Compile Include="ComboboxItem.cs" />
     <Compile Include="EdgeSize.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
@@ -110,6 +105,7 @@
     <Compile Include="httpClass.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reverser.cs" />
     <Compile Include="Sprite.cs" />
     <Compile Include="SpriteFile.cs" />
     <Compile Include="Update.cs">
