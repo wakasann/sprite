@@ -21,7 +21,7 @@ http://www.cnblogs.com/wang4517/p/4529741.html
 ---
 
 # 下载
-下载链接:[百度云盘下载链接](https://pan.baidu.com/s/1jIHpBSE) （提取码：ce1y）
+下载链接:[百度云盘下载链接](https://pan.baidu.com/s/1XGOnSpHf6YXoQG48FCWYZg) （提取码：aa3b）
 ## 说明 ##
 * 运行环境依赖 .Net Framework 4.0 或者大于.Net Framework 4.0
 * exe文件已在Windows 7 64位测试可运行
@@ -36,6 +36,7 @@ http://www.cnblogs.com/wang4517/p/4529741.html
    2. 根据 XXX 排序，这个下拉框会动态改变,当你`选择多幅图片`的文件名(`文件名是文件名称不包含文件格式的名称，如:一个图片文件是:1.jpg,那么这个文件的文件名是:1`)全为数字时，`文件名(数字)`是可以选择的。因为在添加图片时，会判断的图片的文件名是否是数字字符串
 * 2016-06-21 更新
   1. 当图片横排的累计宽度或者竖排的累计高度大于Int16.MaxValue，图片就需要显示在另外一行或者一列
+* 2019-09-28 修正根据图片文件名排序时会异常退出
 
 # todo #
 * ~~在我的开发环境中，当导入的所有图片的高度和或者宽度和 大于32599px时，生成的css background-position 的y或者x会都是-32599px,查了[winform panel加载多个PictureBox后面的堆一起了](http://bbs.csdn.net/topics/391048464?page=1)和[Windows control size limit](http://www.telerik.com/forums/windows-control-size-limit)中有提到panel是有宽度和宽度最大限制的。。~~(2016-06-21)

@@ -609,13 +609,37 @@ namespace CssSprite
         	
         	
         }
+
+        int getFileNameNumber(String fileName)
+        {
+            try
+            {
+               int outA = -1;
+               bool  IsNumber = int.TryParse(fileName,out outA);
+                if(IsNumber)
+                {
+                    return outA;
+                }
+                else
+                {
+                    string result = System.Text.RegularExpressions.Regex.Replace(fileName, @"[^0-9]+", "");
+                    return int.Parse(result);
+                }
+            }
+            catch(Exception)
+            {
+                return 0;
+            }
+            
+        }
 		
         //根据图片的名称进行排序(使用了List最简单的排序方式)
         //@link string 转int http://www.cnblogs.com/lgzslf/archive/2010/11/15/1877383.html
         int ImageOrderByName(ImageInfo i1, ImageInfo i2)
         {
-        	int name1 = int.Parse(i1.Name);
-        	int name2 = int.Parse(i2.Name);
+            
+        	int name1 = getFileNameNumber(i1.Name);
+        	int name2 = getFileNameNumber(i2.Name);
         	
         	if(sortbyMode == 0)
         	{
